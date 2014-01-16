@@ -10,8 +10,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,10 +34,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
@@ -54,7 +48,6 @@ import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -77,6 +70,7 @@ import com.facebook.FacebookOperationCanceledException;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
+import com.facebook.SessionLoginBehavior;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
@@ -208,6 +202,7 @@ public class AndroidMap extends FragmentActivity implements OnMapClickListener, 
 	     * */
 	    //login.setReadPermissions(Arrays.asList("user_likes", "user_status"));
 	    login.setPublishPermissions(Arrays.asList("publish_actions"));
+	    login.setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO);
 	    login.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
             @Override
             public void onUserInfoFetched(GraphUser user) {
@@ -350,7 +345,7 @@ public class AndroidMap extends FragmentActivity implements OnMapClickListener, 
         		}
 				Intent intent= new Intent();
 				Bundle bundle = new Bundle();
-				bundle.putInt("web", 3);
+				bundle.putInt("web", 2);
 				intent.putExtras(bundle);
 				intent.setClass(getApplicationContext(), Web_view.class);
 				startActivity(intent);
@@ -374,7 +369,7 @@ public class AndroidMap extends FragmentActivity implements OnMapClickListener, 
         		}
 				Intent intent= new Intent();
 				Bundle bundle = new Bundle();
-				bundle.putInt("web", 4);
+				bundle.putInt("web", 3);
 				intent.putExtras(bundle);
 				intent.setClass(getApplicationContext(), Web_view.class);
 				startActivity(intent);
@@ -449,8 +444,8 @@ public class AndroidMap extends FragmentActivity implements OnMapClickListener, 
 		        dialog.setTitle("About");
 		        dialog.setMessage("Team: Yuntech EOSLab\n" +
 		        				  "Website: hoyuisun/TravelMap\n" +
-		        				  "Version: v3.0\n" + 
-		        				  "Update: 01/13/2013");
+		        				  "Version: v1.1\n" + 
+		        				  "Update: 01/16/2013");
 		        dialog.setPositiveButton("½T©w",
 		                new DialogInterface.OnClickListener(){
 		                    public void onClick(

@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 public class Traffic extends Activity {
 	
-	private static final String[] mStrings = new String[] {"高快速公路路況資訊", "台鐵", "高鐵"};
+	private static final String[] mStrings = new String[] {"高快速公路路況資訊", "列車時刻資訊"};
 	
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +33,6 @@ public class Traffic extends Activity {
 	            		break;
 	            	case 1:
 	            		bundle.putInt("web", 1);
-	            		break;
-	            	case 2:
-	            		bundle.putInt("web", 2);
 	            		break;
             	}
 				intent.setClass(getApplicationContext(), Web_view.class);

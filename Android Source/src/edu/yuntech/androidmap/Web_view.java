@@ -13,9 +13,8 @@ public class Web_view extends Activity {
         setContentView(R.layout.web_view);
         String myURL1 = "http://pda.freeway.gov.tw/m/";
         String myURL2 = "http://twtraffic.tra.gov.tw/twrail/mobile/home.aspx";
-        String myURL3 = "http://www.thsrc.com.tw/thsrcPDA/";
-        String myURL4 = "http://www.cwb.gov.tw/pda/";
-        String myURL5 = "http://www.necoast-nsa.gov.tw/mobile/scenicSpotList1.aspx";
+        String myURL3 = "http://www.cwb.gov.tw/pda/";
+        String myURL4 = "http://www.necoast-nsa.gov.tw/mobile/scenicSpotList1.aspx";
         Bundle data = this.getIntent().getExtras();
         
         WebView myBrowser=(WebView)findViewById(R.id.webView1); 
@@ -31,18 +30,14 @@ public class Web_view extends Activity {
         	break;
         case 1:
         	myBrowser.loadUrl(myURL2);
-        	setTitle("台鐵");
+        	setTitle("列車查詢");
         	break;
         case 2:
         	myBrowser.loadUrl(myURL3);
-        	setTitle("高鐵");
+        	setTitle("即時氣象");
         	break;
         case 3:
         	myBrowser.loadUrl(myURL4);
-        	setTitle("即時氣象");
-        	break;
-        case 4:
-        	myBrowser.loadUrl(myURL5);
         	break;
         }
 	}
